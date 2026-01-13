@@ -1,0 +1,30 @@
+name: engineering
+channels:
+  - conda-forge
+dependencies:
+  - ca-certificates
+  - certifi
+  - fastparquet
+  - glum
+  - lightgbm
+  - optuna
+  - xgboost
+  - ipython
+  - IProgress
+  - jupyterlab
+  - matplotlib
+  - mlflow
+  - nb_black
+  - openpyxl
+  - openssl
+  - pandas
+  - numpy
+  - psycopg2
+  - pyarrow
+  - python==3.14
+  - scikit-learn
+  - seaborn
+  - plotly
+  - geopandas
+  - shapely
+prefix: /opt/homebrew/Caskroom/mambaforge/base/envs/wids2023-exploration
