@@ -27,4 +27,4 @@ dependencies:
   - plotly
   - geopandas
   - shapely
-prefix: /opt/homebrew/Caskroom/mambaforge/base/envs/wids2023-exploration
+prefix: /opt/homebrew/Caskroom/mambaforge/base/envs/engineering
