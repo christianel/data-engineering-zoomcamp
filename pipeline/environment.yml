@@ -27,8 +27,6 @@ dependencies:
   - plotly
   - geopandas
   - shapely
-  - pgcli
+  - pgcli 
   - jupyter
-  - tqdm 
-  - sqlalchemy
 prefix: /opt/homebrew/Caskroom/mambaforge/base/envs/engineering
