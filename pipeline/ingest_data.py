@@ -18,12 +18,8 @@ def run():
     year=2021
     month=1
 
-    # Read a sample of the data
-    prefix = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/'
-    url=f'{prefix}/yellow_tripdata_{year}-{month:02d}.csv.gz
-    url 
-
-    chunksize=100000
+    chunksize = 100000
+    target_table = 'yellow_taxi_data'
 
     dtype = {
         "VendorID": "Int64",
@@ -52,17 +48,13 @@ def run():
     # Connect to the SQL database
     engine = create_engine('postgresql://root:root@localhost:5432/ny_taxi')
 
-    df = pd.read_csv(
-        url,    
-        dtype=dtype,
-        parse_dates=parse_dates
-    )
-
-    # Create table, but do not insert data yet
-    df.head(n=0).to_sql(name='yellow_taxi_data', con=engine, if_exists='replace')
+    # Define the url of the data
+    prefix = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/'
+    url=f'{prefix}/yellow_tripdata_{year}-{month:02d}.csv.gz'
+    url 
 
     df_iter =pd.read_csv(
-        prefix + 'yellow_tripdata_2021-01.csv.gz',
+        url,
         dtype=dtype,
         parse_dates=parse_dates,
         iterator=True, 
@@ -76,18 +68,22 @@ def run():
 
         if first:
             df_chunk.head(0).to_sql(
-            name="yellow_taxi_data",
-            con=engine,
-            if_exists="replace"
-            )
+                name=target_table,
+                con=engine,
+                if_exists="replace"
+                )
             first = False
             print("Table created")
 
         # Insert chunk
         df_chunk.to_sql(
-            name="yellow_taxi_data",
+            name=target_table,
             con=engine,
             if_exists="append"
         )
 
         print("Inserted:", len(df_chunk))
+
+
+if __name__ == '__main__':
+    run()
