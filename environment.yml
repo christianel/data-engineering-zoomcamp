@@ -1,4 +1,4 @@
-name: engineering
+name: engineer
 channels:
   - conda-forge
 dependencies:
@@ -31,4 +31,4 @@ dependencies:
   - jupyter
   - tqdm 
   - sqlalchemy
-prefix: /opt/homebrew/Caskroom/mambaforge/base/envs/engineering
+prefix: /opt/homebrew/Caskroom/mambaforge/base/envs/engineer
