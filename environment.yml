@@ -31,4 +31,6 @@ dependencies:
   - jupyter
   - tqdm 
   - sqlalchemy
+  - click
+  - pgadmin4-python
 prefix: /opt/homebrew/Caskroom/mambaforge/base/envs/engineer

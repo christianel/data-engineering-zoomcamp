@@ -31,4 +31,5 @@ dependencies:
   - jupyter
   - sqlalchemy
   - tqdm 
+  - click 
 prefix: /opt/homebrew/Caskroom/mambaforge/base/envs/engineer

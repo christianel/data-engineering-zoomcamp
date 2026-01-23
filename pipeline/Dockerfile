@@ -3,13 +3,13 @@ FROM ghcr.io/mamba-org/micromamba:latest
 
 WORKDIR /code
 
-COPY environment.yml .
+COPY ../environment.yml .
 
 RUN micromamba create -f environment.yml
 
-ENV PATH /opt/conda/envs/engineering/bin:$PATH
-RUN echo "source activate engineering" < ~/.bashrc
+ENV PATH /opt/conda/envs/engineer/bin:$PATH
+RUN echo "source activate engineer" < ~/.bashrc
 
-COPY pipeline.py .
+COPY ingest_data.py .
 
-ENTRYPOINT ["python", "pipeline.py"]
+ENTRYPOINT ["python", "ingest_data.py"]

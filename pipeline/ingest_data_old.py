@@ -6,21 +6,20 @@
 import pandas as pd
 from sqlalchemy import create_engine
 from tqdm.auto import tqdm
-import click
 
-@click.command()
-@click.option('--user', default='root', help='PostgreSQL user')
-@click.option('--password', default='root', help='PostgreSQL password')
-@click.option('--host', default='localhost', help='PostgreSQL host')
-@click.option('--port', default=5432, type=int, help='PostgreSQL port')
-@click.option('--db', default='ny_taxi', help='PostgreSQL database name')
-@click.option('--table', default='yellow_taxi_data', help='Target table name')
+def run():
 
-def run(user, password, host, port, db, table):
+    pg_user ='root'
+    pg_pass ='root'
+    pg_host ='localhost'
+    pg_port=5432
+    pg_db='ny_taxi'
 
     year=2021
     month=1
+
     chunksize = 100000
+    target_table = 'yellow_taxi_data'
 
     dtype = {
         "VendorID": "Int64",
@@ -47,9 +46,7 @@ def run(user, password, host, port, db, table):
     ]
 
     # Connect to the SQL database
-    #engine = create_engine('postgresql://root:root@localhost:5432/ny_taxi')
-    connection_string = f'postgresql://{user}:{password}@{host}:{port}/{db}'
-    engine = create_engine(connection_string)
+    engine = create_engine('postgresql://root:root@localhost:5432/ny_taxi')
 
     # Define the url of the data
     prefix = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/'
@@ -71,7 +68,7 @@ def run(user, password, host, port, db, table):
 
         if first:
             df_chunk.head(0).to_sql(
-                name=table,
+                name=target_table,
                 con=engine,
                 if_exists="replace"
                 )
@@ -80,7 +77,7 @@ def run(user, password, host, port, db, table):
 
         # Insert chunk
         df_chunk.to_sql(
-            name=table,
+            name=target_table,
             con=engine,
             if_exists="append"
         )
