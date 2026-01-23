@@ -6,7 +6,7 @@ Answer: The Dockerfile is in the repo.
 
 In the shell, I can run the following two commands: 
 
-````
+```
 docker build -t test:pipversion .
 docker run -it --rm test:pipversion
 pip --version
