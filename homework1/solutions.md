@@ -10,7 +10,7 @@ In the shell, I can run the following two commands:
 docker build -t test:pipversion .
 docker run -it --rm test:pipversion
 pip --version
-``
+```
 
 The version of `pip` in the image is
 
