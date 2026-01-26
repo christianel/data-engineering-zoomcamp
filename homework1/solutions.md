@@ -54,28 +54,7 @@ volumes:
     name: vol-pgadmin_data
 ```
 
-- postgres:5433
-- localhost:5432
-- db:5433
-- postgres:5432
-- db:5432
-
-If multiple answers are correct, select any 
-
-
-## Prepare the Data
-
-Download the green taxi trips data for November 2025:
-
-```bash
-wget https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2025-11.parquet
-```
-
-You will also need the dataset with zones:
-
-```bash
-wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_zone_lookup.csv
-```
+It is postgres:5432. 
 
 ## Question 3. Counting short trips
 
